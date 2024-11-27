@@ -46,6 +46,31 @@ This project implements a **Role-Based Access Control (RBAC)** system using Spri
 
 ---
 
+## **Custom Repository Queries**
+
+The following custom queries are used in the application for user and role management:
+
+### **User Repository Queries**
+1. **Find a User by Username**  
+   - `findByUsername(String username)`  
+     Retrieves a user by their username.
+
+2. **Check if a Username Exists**  
+   - `existsByUsername(String username)`  
+     Checks if a username already exists in the database.
+
+3. **Find a User by Username with Roles**  
+   - `findByUsernameWithRoles(String username)`  
+     Retrieves a user along with their associated roles using a custom query to join the `User` and `Role` tables.
+
+### **Role Repository Query**
+1. **Find a Role by Name**  
+   - `findByName(String name)`  
+     Retrieves a role by its name (e.g., `ADMIN`, `USER`, `MODERATOR`).
+
+---
+
+This section highlights the custom queries you’ve implemented for fetching users and roles from the database.
 ## **Authentication Flow**
 
 1. **Registration (`/auth/register`):**
