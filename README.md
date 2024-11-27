@@ -196,5 +196,10 @@ Here’s the corrected code format for your **Screenshots** section in the `READ
 - **Get User Profile (Every Role can access it, but one user cannot see another user's profile)**  
   ![image](https://github.com/user-attachments/assets/c994ae0d-2f19-4431-9b9d-0a39df9d8e94)
 
+### In SQL. Password is stored in hashed format
+  ![image](https://github.com/user-attachments/assets/80d1376c-125a-43d4-a868-91dd0f7b468c)
+  ### One Mapping table is used to map role with users
+![image](https://github.com/user-attachments/assets/a1c19372-7992-42f3-ab89-dd2b804fc5a7)
+
 ---
 
