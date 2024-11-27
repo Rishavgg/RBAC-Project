@@ -1,6 +1,6 @@
 package main.RBAC.service.serviceImpl;
 
-import main.RBAC.model.Role;
+import jakarta.transaction.Transactional;
 import main.RBAC.model.User;
 import main.RBAC.repository.UserRepository;
 import main.RBAC.service.CustomUserDetailsService;
@@ -17,17 +17,20 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService, CustomU
     private UserRepository userRepository;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsernameWithRoles(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
+
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
                 .authorities(user.getRoles().stream()
-                        .map(Role::getName)
+                        .map(role -> "ROLE_" + role.getName())
                         .toArray(String[]::new))
                 .build();
     }
+
 }
