@@ -112,7 +112,7 @@ This project implements a **Role-Based Access Control (RBAC)** system using Spri
    ```
 
 3. **Access the Application**
-   - The application runs on `http://localhost:8080`.
+   - The application runs on `http://localhost:8000`.
 
 ---
 
