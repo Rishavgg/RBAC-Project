@@ -1,16 +1,15 @@
 package main.RBAC.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import main.RBAC.model.User;
 import main.RBAC.response.ResponseDTO;
 import main.RBAC.response.UserDetailsDTO;
 import main.RBAC.security.JwtBlacklist;
 import main.RBAC.security.JwtUtil;
 import main.RBAC.service.UserService;
-import main.RBAC.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

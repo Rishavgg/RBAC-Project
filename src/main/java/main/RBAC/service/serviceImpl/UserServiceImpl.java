@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -80,4 +81,36 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    @Override
+    public String assignRole(String username, String roleName) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            return "User not found";
+        }
+
+        Role role = roleRepository.findByName(roleName);
+        if (role == null) {
+            return "Role not found";
+        }
+
+        user.addRole(role);
+        userRepository.save(user);
+        return "Role assigned successfully";
+    }
+
+    @Override
+    public String updateUserProfile(Long id, User userDetails) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            return "User not found";
+        }
+
+        User user = optionalUser.get();
+        user.setName(userDetails.getName());
+        user.setUsername(userDetails.getUsername());
+        userRepository.save(user);
+        return "User profile updated successfully";
+    }
+
 }

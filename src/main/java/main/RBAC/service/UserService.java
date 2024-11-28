@@ -14,4 +14,8 @@ public interface UserService {
     ResponseEntity<ResponseDTO> loginUser(UserDetailsDTO userDetailsDTO);
 
     List<User> getAllUsers();
+
+    String assignRole(String username, String roleName);
+
+    String updateUserProfile(Long id, User userDetails);
 }
